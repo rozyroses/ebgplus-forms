@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#090708" />
+  <meta name="description" content="Official EBG casting and submission forms." />
+  <title>EBG Forms | Casting & Submissions</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="brandbar">
+      <a class="brand" href="https://ebgplus.app" aria-label="EBG+ home">EBG<span>+</span></a>
+      <span class="forms-label">Forms</span>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">EBG CASTING</p>
+      <h1>Step into the story.</h1>
+      <p class="lede">Official casting and submission forms for EBG+ originals. Heartspell House is currently accepting applications.</p>
+    </section>
+
+    <section class="form-card" aria-labelledby="casting-title">
+      <div class="form-heading">
+        <div>
+          <p class="eyebrow">NOW CASTING</p>
+          <h2 id="casting-title">Heartspell House</h2>
+        </div>
+        <span class="pill">21+</span>
+      </div>
+
+      <form id="casting-form">
+        <input type="hidden" name="showId" value="heartspell-house" />
+
+        <div class="grid">
+          <label>Legal name<input name="legalName" autocomplete="name" required maxlength="120" /></label>
+          <label>Age<input name="age" type="number" min="21" max="120" required /></label>
+          <label>City / State<input name="cityState" autocomplete="address-level2" required maxlength="120" /></label>
+          <label>Email<input name="email" type="email" autocomplete="email" required maxlength="254" /></label>
+          <label class="full">What are you looking for?<textarea name="relationshipGoals" minlength="10" maxlength="4000" required placeholder="Tell us what you're hoping to find..."></textarea></label>
+          <label class="full">How comfortable are you being filmed?<textarea name="cameraComfort" minlength="10" maxlength="4000" required placeholder="Tell us a little about your comfort on camera..."></textarea></label>
+        </div>
+
+        <label class="consent"><input type="checkbox" required /> <span>I confirm that I am at least 21 years old and that the information I provided is accurate.</span></label>
+
+        <button id="submit-button" type="submit">Submit application</button>
+        <p id="form-status" class="status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <footer>
+      <span>© EBG+</span>
+      <a href="https://ebgplus.app">Back to EBG+</a>
+    </footer>
+  </main>
+
+  <script src="./config.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
