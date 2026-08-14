@@ -1,0 +1,1 @@
+window.EBG_FORMS_CONFIG={supabaseUrl:'https://dilhuwhqkrhknhrsngud.supabase.co',supabaseAnonKey:'__SUPABASE_ANON_KEY__'};
