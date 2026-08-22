@@ -71,14 +71,14 @@ const renderForm = async (slug) => {
     app.innerHTML = chrome(`<section class="form-page"><p class="eyebrow">${esc(form.eyebrow)}</p><h1>${esc(form.title)}</h1><p>${esc(form.description)}</p>${getSession() ? '<div class="signed-in">✓ Signed in — this application will appear in My Applications.</div>' : '<div class="signed-in muted">Submitting as guest. Sign in first if you want in-app updates and messaging.</div>'}<form id="dynamic-form" class="question-grid">${fields}<div class="full"><button id="submit">Submit to EBG</button><p id="status"></p></div></form></section>`);
     wireAuth();
     document.querySelector('#dynamic-form')?.addEventListener('submit', async (e) => {
-      e.preventDefault(); const button=document.querySelector('#submit'); const status=document.querySelector('#status'); const data=new FormData(e.currentTarget); const answers={};
+      e.preventDefault(); const formEl=e.currentTarget; const button=document.querySelector('#submit'); const status=document.querySelector('#status'); const data=new FormData(formEl); const answers={};
       (form.questions||[]).forEach(q => answers[q.key]=String(data.get(q.key)||'').trim());
       const emailQ=(form.questions||[]).find(q=>q.type==='email'); const email=emailQ ? String(answers[emailQ.key]||'') : '';
       button.disabled=true; status.textContent='Submitting…';
       try {
         const session=getSession();
         await request('/rest/v1/rpc/submit_ebg_form', {method:'POST', body:JSON.stringify({p_form_id:form.id,p_answers:answers,p_respondent_email:email||null})}, session?.access_token);
-        e.currentTarget.reset(); status.className='success'; status.textContent=form.submit_message;
+        formEl.reset(); status.className='success'; status.textContent=form.submit_message;
       } catch(err) { status.className='error'; status.textContent=err.message || 'Your response could not be submitted.'; }
       finally { button.disabled=false; }
     });
