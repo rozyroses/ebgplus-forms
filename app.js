@@ -3,6 +3,19 @@ const cfg = window.EBG_FORMS_CONFIG || {};
 const API = String(cfg.supabaseUrl || '').replace(/\/$/, '');
 const KEY = String(cfg.supabaseAnonKey || '');
 const SESSION_KEY = 'ebg.forms.session.v1';
+const THEME_KEY = 'ebg.forms.theme.v1';
+
+const readTheme = () => {
+  const saved = localStorage.getItem(THEME_KEY);
+  if (saved === 'light' || saved === 'dark') return saved;
+  return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+};
+const applyTheme = (theme) => {
+  document.documentElement.dataset.theme = theme;
+  document.documentElement.style.colorScheme = theme;
+  localStorage.setItem(THEME_KEY, theme);
+};
+applyTheme(readTheme());
 
 const esc = (value='') => String(value).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
 const headers = (token) => ({ apikey: KEY, Authorization: `Bearer ${token || KEY}`, 'Content-Type': 'application/json' });
@@ -17,7 +30,7 @@ const getSession = () => { try { return JSON.parse(localStorage.getItem(SESSION_
 const saveSession = (session) => session ? localStorage.setItem(SESSION_KEY, JSON.stringify(session)) : localStorage.removeItem(SESSION_KEY);
 
 const logo='<span class="logo-art"><img src="/branding/ebgplus-ink-blue.png" alt="EBG+" width="1920" height="819"></span>';
-const renderShell=(body)=>`<a class="skip-link" href="#content">Skip to content</a><div class="shell"><header class="topbar"><a class="brand" href="/">${logo}<span class="product-label">Forms</span></a><nav aria-label="Main navigation"><a href="/">Opportunities</a><a href="https://ebgplus.app/app/applications">My applications</a><button id="auth-button" class="ghost">${getSession()?'Sign out':'Sign in'}</button></nav></header><main id="content">${body}</main><footer><a class="brand" href="https://ebgplus.app">${logo}</a><p>Your next chapter starts here.</p><a href="https://ebgplus.app/app/help">Need a hand? Get help ↗</a></footer></div>`;
+const renderShell=(body)=>`<a class="skip-link" href="#content">Skip to content</a><div class="shell"><header class="topbar"><a class="brand" href="/">${logo}<span class="product-label">Forms</span></a><nav aria-label="Main navigation"><a href="/">Opportunities</a><a href="https://ebgplus.app/app/applications">My applications</a><button id="theme-button" class="theme-button" type="button" aria-label="Toggle color theme"><span aria-hidden="true">${readTheme()==='light'?'☾':'☀'}</span><strong>${readTheme()==='light'?'Dark':'Light'}</strong></button><button id="auth-button" class="ghost">${getSession()?'Sign out':'Sign in'}</button></nav></header><main id="content">${body}</main><footer><a class="brand" href="https://ebgplus.app">${logo}</a><p>Your next chapter starts here.</p><a href="https://ebgplus.app/app/help">Need a hand? Get help ↗</a></footer></div>`;
 
 const loadForms = async () => request('/rest/v1/ebg_forms?status=eq.open&order=created_at.desc');
 const loadForm = async (slug) => {
@@ -41,10 +54,18 @@ const renderAuth = () => {
   document.querySelector('#cancel-login')?.addEventListener('click', () => { sessionStorage.setItem('ebg.forms.skipLogin','1'); location.reload(); });
 };
 
-const wireAuth = () => document.querySelector('#auth-button')?.addEventListener('click', () => {
-  if (getSession()) { saveSession(null); location.reload(); }
-  else { sessionStorage.removeItem('ebg.forms.skipLogin'); renderAuth(); }
-});
+const wireAuth = () => {
+  document.querySelector('#auth-button')?.addEventListener('click', () => {
+    if (getSession()) { saveSession(null); location.reload(); }
+    else { sessionStorage.removeItem('ebg.forms.skipLogin'); renderAuth(); }
+  });
+  document.querySelector('#theme-button')?.addEventListener('click', () => {
+    const next = readTheme() === 'light' ? 'dark' : 'light';
+    applyTheme(next);
+    const button = document.querySelector('#theme-button');
+    if (button) button.innerHTML = `<span aria-hidden="true">${next==='light'?'☾':'☀'}</span><strong>${next==='light'?'Dark':'Light'}</strong>`;
+  });
+};
 
 const renderHome = async () => {
   app.innerHTML=renderShell('<section class="empty" role="status"><h1>Finding your next chapter…</h1></section>');wireAuth();
