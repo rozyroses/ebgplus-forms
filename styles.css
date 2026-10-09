@@ -99,3 +99,5 @@ input,textarea,select{display:block;width:100%;border:1px solid var(--line);bord
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 
 :root[data-theme="dark"]{--brand:#c9b6ff;--brand-strong:#deceff;--ink:#f5f3f9;--muted:#b0aabb;--canvas:#111116;--surface:#1b1922;--surface-solid:#1b1922;--surface-2:#25222e;--line:#ffffff20;--sky:#272536;--mint:#23322d;--blush:#342532;--lilac:#2d253b} .logo-art{aspect-ratio:224/64}.logo-art img{position:static;width:100%;height:100%;object-fit:contain}:root[data-theme="dark"] .logo-art img{filter:none}
+
+:root[data-theme="dark"] button:not(.ghost):not(.theme-button),:root[data-theme="dark"] .primary{color:#24192e}
