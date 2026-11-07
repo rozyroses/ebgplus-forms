@@ -1,0 +1,94 @@
+/* The EBG+ cinematic palette, adapted for clear and comfortable applications. */
+:root,:root[data-theme='dark']{
+ --canvas:#09090d;--surface:#141419;--surface-solid:#141419;--surface-2:#1e1d27;
+ --ink:#f6f5fa;--muted:#aaa6ba;--line:#ffffff19;--brand:#ba9bff;--brand-strong:#d7c4ff;
+ --lilac:#2a2139;--blush:#2e1c2a;--sky:#16252b;--mint:#19302b;
+ --shadow:0 20px 65px #0004;--shadow-soft:none;color-scheme:dark;
+}
+html,body{background:#09090d;color:var(--ink)}
+body{background-image:none}
+h1,h2,h3{font-family:inherit;font-weight:750;letter-spacing:-.05em}
+:is(a,button,input,textarea,select):focus-visible{outline:2px solid #79e2e9;outline-offset:4px}
+.topbar{width:100%;margin:0;padding:14px clamp(20px,4.8vw,80px);top:0;min-height:86px;border:0;border-bottom:1px solid var(--line);border-radius:0;background:#101015f5;box-shadow:none;backdrop-filter:blur(24px)}
+.logo-art{width:120px;aspect-ratio:2.5}
+.logo-art img{position:static;width:100%;height:100%;object-fit:contain}
+.product-label{font-size:13px;font-weight:650;letter-spacing:0;padding-left:20px}
+.topbar nav{gap:18px;font-size:12px}
+.topbar nav>a{border-radius:7px;padding:12px 8px}
+.topbar nav>a:hover{background:#ffffff08;color:#f6f5fa}
+button,.primary{background:#d7c4ff;border:1px solid #d7c4ff;color:#211331!important;border-radius:8px;box-shadow:none;min-height:46px;padding:13px 20px;font-size:12px;font-weight:750}
+button:hover,.primary:hover{background:#e6d9ff;transform:translateY(-1px);box-shadow:none}
+.ghost{background:#ffffff06;border:1px solid #ffffff2a;color:#e7deef!important;border-radius:8px;box-shadow:none}
+.ghost:hover{background:#ffffff12}
+.hero,.directory,.how-it-works{width:min(1440px,calc(100% - clamp(40px,9.6vw,160px)))}
+.hero{padding:72px 0;gap:8vw;min-height:600px}
+.eyebrow{color:#ba9bff;font-size:9px;font-weight:700;letter-spacing:.16em;line-height:1.6}
+.hero h1{font-size:clamp(48px,6.3vw,88px);line-height:.98;margin:24px 0}
+.hero em{font-family:inherit;font-style:normal;font-weight:750;color:#ba9bff}
+.hero>div>p:not(.eyebrow){color:#b4adbf;font-size:14px;line-height:1.8;max-width:420px}
+.hero-note{min-height:400px;padding:38px;border:1px solid #ffffff1c;border-radius:14px;box-shadow:none;background:radial-gradient(ellipse at 100% 0,#4b31596b,transparent 70%),#19131f;justify-content:center;overflow:hidden}
+.note-index{top:30px;color:#ad97be;font-size:8px;letter-spacing:.15em}
+.hero-note h2{font-size:clamp(48px,6vw,80px);line-height:.98;letter-spacing:-.06em;margin:45px 0 25px;color:#f0e4ff}
+.hero-note h2>span{color:#ff93b8}
+.hero-note p{font-size:12px;color:#b7a6c9;line-height:1.7}
+.plus-art{font-size:340px;right:-45px;top:10px;color:#ba9bff0e;transform:rotate(-9deg)}
+.directory{padding:14px 0 60px;scroll-margin-top:115px}
+.section-heading{margin-bottom:28px}
+.section-heading h2{font-size:32px}
+.count{background:#ba9bff14;color:#d7c4ff;font-size:11px;padding:6px 9px}
+.search-label input{width:280px;background:#17151e;border-color:#ffffff26;border-radius:8px;min-height:46px;color:white}
+input,textarea,select{background:#1b1923;color:var(--ink);border:1px solid #ffffff28;border-radius:8px;min-height:46px;caret-color:#ba9bff;color-scheme:dark}
+input::placeholder,textarea::placeholder{color:#948b9f;opacity:1}
+input:-webkit-autofill{-webkit-text-fill-color:#f6f5fa;box-shadow:0 0 0 1000px #1b1923 inset}
+.form-list{gap:20px}
+.form-card,.form-card:nth-child(n){background:#141419;border:1px solid #ffffff1c;border-radius:12px;padding:26px;box-shadow:none;gap:26px;min-height:300px}
+.form-card:nth-child(3n+1){border-top:2px solid #ba9bff66}
+.form-card:nth-child(3n+2){border-top:2px solid #ff93b866}
+.form-card:nth-child(3n+3){border-top:2px solid #79e2e966}
+.form-card:hover{border-color:#ba9bff70;transform:translateY(-3px);box-shadow:0 16px 38px #0003}
+.form-card .eyebrow{font-size:8px;line-height:1.6}
+.form-card h3{font-size:24px;line-height:1.15;letter-spacing:-.035em}
+.form-card p:not(.eyebrow){color:#aaa2b7;line-height:1.75;font-size:12px}
+.form-card strong{font-size:11px;color:#d4c1ee;border-color:#ffffff16}
+.badge{background:#79e2e910;color:#93d6cc;border:1px solid #79e2e922;font-size:8px;letter-spacing:.04em;border-radius:5px;padding:5px 8px}
+.card-number{font-size:9px;color:#81758e}
+.how-it-works{padding:55px 0 70px;border-color:var(--line)}
+.how-it-works h2{font-size:38px;line-height:1.08}
+.how-it-works li{border-color:var(--line)}
+.how-it-works h3{font-size:16px;color:#e7dfef}
+.how-it-works p{color:#a399b1;font-size:12px;line-height:1.7}
+footer{width:100%;padding:32px clamp(20px,4.8vw,80px);margin:0;border:0;border-top:1px solid var(--line);border-radius:0;box-shadow:none;background:#09090d;font-size:11px;color:#a69ab7;gap:30px}
+footer .logo-art{width:100px;aspect-ratio:2.5}
+footer p{color:#8c809e;font-size:11px}
+.application-layout{width:min(1280px,calc(100% - clamp(40px,9.6vw,160px)));gap:6vw;margin-top:50px}
+.application-context h1{font-size:clamp(38px,4.6vw,64px);line-height:1.05;letter-spacing:-.05em}
+.application-context>p{color:#aaa0b8;font-size:13px;line-height:1.8}
+.application-context .eyebrow{color:#ba9bff;font-size:9px}
+.back-link{background:#ffffff05;border:1px solid #ffffff20;border-radius:6px;min-height:40px;padding:11px 14px;font-size:11px}
+.application-progress{border-color:#ffffff1a}
+.application-progress>span{font-size:11px;color:#ddd0ed}
+.application-progress p{color:#92859f;font-size:11px}
+progress{height:4px;margin:16px 0;accent-color:#ba9bff}
+progress::-webkit-progress-bar{background:#ffffff12}
+progress::-webkit-progress-value{background:#ba9bff}
+.form-page{background:#141219;border:1px solid #ffffff1c;border-radius:14px;padding:32px;box-shadow:none;backdrop-filter:none}
+.form-intro h2{font-size:30px}
+.form-intro p:not(.eyebrow){color:#aaa0b8}
+.signed-in{background:#79e2e909;color:#95cdc6;border-color:#79e2e920;border-radius:8px;font-size:11px}
+.signed-in.muted{background:#ba9bff09;color:#baa8cc;border-color:#ba9bff20}
+.field-note{font-size:9px;color:#9b8eaa}
+.question-grid{gap:22px}
+.question-grid label{color:#d7cbe3;font-size:12px}
+.submit-area{border-color:#ffffff18}
+.submit-area>p{color:#a89bb7;font-size:11px}
+.auth-card{background:#141219;border:1px solid #ffffff20;border-radius:16px;box-shadow:none;backdrop-filter:none}
+.auth-card h1{font-size:40px;line-height:1.05}
+.auth-card label{color:#b7a9c8;font-size:12px}
+.confirmation-mark{border-radius:14px;background:#ba9bff15;color:#d7c4ff;width:60px;height:60px}
+.empty{background:#141219;border-color:#ffffff1c;border-radius:12px;box-shadow:none}
+.empty h1{font-size:34px}
+.empty p{color:#aaa0b8}
+.error,#status.error{color:#ff9eb0}
+@media(max-width:1000px){.hero{gap:32px;grid-template-columns:1fr 1fr}.hero-note{min-height:350px;padding:28px}.hero-note h2{font-size:64px}.hero h1{font-size:64px}.topbar nav{gap:6px}}
+@media(max-width:760px){.topbar{padding:12px 20px;min-height:74px;flex-wrap:wrap;gap:6px}.topbar nav{width:100%;font-size:10px;gap:4px}.topbar nav>a{padding:10px 8px}.topbar nav button{min-height:38px;font-size:10px}.logo-art{width:105px;aspect-ratio:2.5}.product-label{font-size:12px}.hero{grid-template-columns:1fr;padding:42px 0;min-height:0;gap:28px}.hero h1{font-size:clamp(44px,13vw,68px);margin:18px 0}.hero>div>p:not(.eyebrow){font-size:13px}.hero-note{min-height:270px;padding:28px;aspect-ratio:1.5}.hero-note h2{font-size:58px;margin:35px 0 20px}.note-index{top:22px;font-size:7px}.hero-note p{font-size:11px}.directory{padding:12px 0 40px}.section-heading h2{font-size:28px}.section-heading{gap:18px;margin-bottom:22px}.form-list{gap:14px}.form-card,.form-card:nth-child(n){padding:24px;min-height:0;gap:22px}.form-card h3{font-size:24px}.how-it-works{padding:38px 0 46px}.how-it-works h2{font-size:32px}.application-layout{grid-template-columns:1fr;margin-top:28px;gap:28px}.form-page{padding:24px;border-radius:12px}.application-context h1{font-size:40px}.application-context{position:static}.form-intro h2{font-size:28px}.auth-card{padding:26px}.auth-card h1{font-size:34px}footer{padding:26px 20px;gap:18px}footer>a:last-child{font-size:10px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}.form-card:hover{transform:none}}
